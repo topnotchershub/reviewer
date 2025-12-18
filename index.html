@@ -15,9 +15,17 @@
   <iframe src="https://script.google.com/macros/s/AKfycbxbwlGizADBKzdVpmSMHVnhJ9dB3j2BfTDtEyZHXe1BaniU7x4PjtgMJXT37iT5akaD/exec"></iframe>
   <script>
     if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('sw.js');
+      // Use ./sw.js instead of just sw.js
+      navigator.serviceWorker.register('./sw.js')
+        .then(function(reg) {
+          console.log('Service Worker Registered!', reg);
+        })
+        .catch(function(err) {
+          console.log('Service Worker registration failed: ', err);
+        });
     }
   </script>
 </body>
 
 </html>
+
